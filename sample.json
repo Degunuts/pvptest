@@ -1,0 +1,24 @@
+[
+{
+  "Author": "bike",
+  "Name": "cc win rate tracker",
+  "InternalName": "SamplePlugin",
+  "AssemblyVersion": "0.0.0.2",
+  "Description": "self explanatory",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "sample",
+    "plugin",
+    "goats"
+  ],
+  "DalamudApiLevel": 9,
+  "LoadRequiredState": 0,
+  "LoadSync": false,
+  "CanUnloadAsync": false,
+  "LoadPriority": 0,
+  "Punchline": ":3",
+  "AcceptsFeedback": true,
+"DownloadLinkInstall": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip",
+"DownloadLinkUpdate": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip"
+}
+]
