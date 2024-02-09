@@ -62,7 +62,7 @@ namespace SamplePlugin
             
         }
         public ushort CrystallineConflictRankedMatches;
-        private Ccstring(ushort matches)
+        private string Ccstring(ushort matches)
         {
             return matches.ToString();
         }
