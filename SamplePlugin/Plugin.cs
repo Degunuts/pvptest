@@ -3,7 +3,7 @@ using Dalamud.IoC;
 using Dalamud.Plugin;
 using System.IO;
 using Dalamud.Game.Text.SeStringHandling;
-using FFXIVClientStructs.FFXIV.Client.Game.UI
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
 using SamplePlugin.Windows;
@@ -62,7 +62,7 @@ namespace SamplePlugin
             
         }
         public ushort CrystallineConflictRankedMatches;
-        private ccstring(matches);
+        private ccstring(ushort matches)
         {
             matches.ToString();
         }
