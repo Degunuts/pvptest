@@ -1,24 +1,23 @@
-[
-  {
-    "Author": "bike",
-    "Name": "CC win rate tracker",
-    "Description": "self explanatory",
-    "InternalName": "CC win rate tracker",
-    "AssemblyVersion": "1.0.0.1",
-    "TestingAssemblyVersion": "1.0.0.1",
-    "RepoUrl": "https://github.com/Degunuts/pvptest",
-    "ApplicableVersion": "any",
-    "DalamudApiLevel": 9,
-    "IsHide": "False",
-    "IsTestingExclusive": "False",
-    "DownloadCount": 0,
-    "LastUpdate": 0,
-    "LoadPriority": 69420,
-    "LoadRequiredState": 2,
-    "LoadSync": true,
-    "DownloadLinkInstall": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip",
-    "DownloadLinkTesting": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip",
+{
+  "Author": "bike",
+  "Name": "cc win rate tracker",
+  "InternalName": "SamplePlugin",
+  "AssemblyVersion": "0.0.0.1",
+  "Description": "self explanatory",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "sample",
+    "plugin",
+    "goats"
+  ],
+  "DalamudApiLevel": 9,
+  "LoadRequiredState": 0,
+  "LoadSync": false,
+  "CanUnloadAsync": false,
+  "LoadPriority": 0,
+  "Punchline": ":3",
+  "AcceptsFeedback": true
 
-  }
-]
+  "DownloadLinkInstall": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip",
+
+}
