@@ -75,12 +75,16 @@ namespace SamplePlugin
             
             this.CommandManager.RemoveHandler(CommandName);
         }
-
+        public unsafe bool IsPlayerMentor() {
+            var playerStatePtr = PlayerState.Instance();
+            return playerStatePtr->IsMentor();
+        }
         private void OnCommand(string command, string args)
         {
             // in response to the slash command, just display our main ui
             MainWindow.IsOpen = true;
             BuildChatMessage(Ccstring(CrystallineConflictRankedMatches));
+            BuildChatMessage(IsPlayerMentor());
         }
 
         private void DrawUI()
