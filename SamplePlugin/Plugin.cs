@@ -60,7 +60,7 @@ namespace SamplePlugin
 
             
         }
-        public ushort CrystallineConflictRankedMatches;
+        public ushort PvPProfile.CrystallineConflictRankedMatches;
         private string Ccstring(ushort matches)
         {
             return matches.ToString();
@@ -84,7 +84,7 @@ namespace SamplePlugin
             // in response to the slash command, just display our main ui
             MainWindow.IsOpen = true;
             BuildChatMessage(Ccstring(CrystallineConflictRankedMatches));
-            BuildChatMessage(IsPlayerMentor());
+            
         }
 
         private void DrawUI()
