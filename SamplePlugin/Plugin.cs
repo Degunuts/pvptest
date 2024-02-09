@@ -7,7 +7,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
 using SamplePlugin.Windows;
-
+using Dalamud.Game.Text;
 namespace SamplePlugin
 {
 
@@ -60,7 +60,8 @@ namespace SamplePlugin
 
             
         }
-        public ushort PvPProfile.CrystallineConflictRankedMatches;
+        public struct PvPProfile;
+        public ushort CrystallineConflictRankedMatches;
         private string Ccstring(ushort matches)
         {
             return matches.ToString();
@@ -83,8 +84,10 @@ namespace SamplePlugin
         {
             // in response to the slash command, just display our main ui
             MainWindow.IsOpen = true;
-            BuildChatMessage(Ccstring(CrystallineConflictRankedMatches));
-            
+            DalamudApi.ChatGui.Print(BuildChatMessage(Ccstring(CrystallineConflictRankedMatches)));
+            DalamudApi.ChatGui.Print(BuildChatMessage("TEST"));
+
+
         }
 
         private void DrawUI()
