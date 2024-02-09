@@ -12,7 +12,7 @@ namespace SamplePlugin
 {
 
 
-        public sealed class Plugin : IDalamudPlugin
+    public sealed class Plugin : IDalamudPlugin
     {
         public string Name => "Sample Plugin";
         private const string CommandName = "/pmycommand";
