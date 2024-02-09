@@ -1,5 +1,5 @@
 [
-{
+    {
     "Author": "bike",
     "Name": "cc win rate tracker",
     "InternalName": "cc win rate tracker",
@@ -19,5 +19,5 @@
     "Punchline": ":3",
     "AcceptsFeedback": true,
     "DownloadLinkInstall": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip"
-}
+    }
 ]
