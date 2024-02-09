@@ -12,6 +12,11 @@ using Dalamud.Game.Text;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using System.Collections.Generic;
+using System.Reflection;
+using System;
+using FFXIVClientStructs.Interop.Attributes;
+using System.Runtime.InteropServices;
 
 namespace SamplePlugin
 {
@@ -22,45 +27,13 @@ namespace SamplePlugin
         public string Name => "Sample Plugin";
         private const string CommandName = "/pmycommand";
         private SeString BuildChatMessage(string message)
-	    {
-		return new SeStringBuilder()
-			.AddUiForeground("[Orchestrion] ", 35)
-			.AddText(message)
-			.Build();
-       }
-       public class DalamudApi
-       
         {
-            public static void Initialize(DalamudPluginInterface pluginInterface) => pluginInterface.Create<DalamudApi>();
-        
-            // [PluginService] public static IAetheryteList AetheryteList { get; private set; } = null;
-            // [PluginService] public static IBuddyList BuddyList { get; private set; } = null;    
-            [PluginService] public static IChatGui ChatGui { get; private set; } = null;
-            [PluginService] public static IClientState ClientState { get; private set; } = null;
-            [PluginService] public static ICommandManager CommandManager { get; private set; } = null;
-            // [PluginService] public static ICondition Condition { get; private set; } = null;
-            [PluginService] public static DalamudPluginInterface PluginInterface { get; private set; } = null;
-            [PluginService] public static IDataManager DataManager { get; private set; } = null;
-            [PluginService] public static IDtrBar DtrBar { get; private set; } = null;
-            // [PluginService] public static IFateTable FateTable { get; private set; } = null;
-            // [PluginService] public static IFlyTextGui FlyTextGui { get; private set; } = null;
-            [PluginService] public static IFramework Framework { get; private set; } = null;
-            [PluginService] public static IGameGui GameGui { get; private set; } = null;
-            // [PluginService] public static IGameNetwork GameNetwork { get; private set; } = null;
-            // [PluginService] public static IGamepadState GamePadState { get; private set; } = null;
-            // [PluginService] public static IJobGauges JobGauges { get; private set; } = null;
-            // [PluginService] public static IKeyState KeyState { get; private set; } = null;
-            // [PluginService] public static ILibcFunction LibcFunction { get; private set; } = null;
-            // [PluginService] public static IObjectTable ObjectTable { get; private set; } = null;
-            // [PluginService] public static IPartyFinderGui PartyFinderGui { get; private set; } = null;
-            // [PluginService] public static IPartyList PartyList { get; private set; } = null;
-            [PluginService] public static ISigScanner SigScanner { get; private set; } = null;
-            // [PluginService] public static ITargetManager TargetManager { get; private set; } = null;
-            // [PluginService] public static IToastGui ToastGui { get; private set; } = null;
-            [PluginService] public static IGameInteropProvider Hooks { get; private set; } = null;
-            [PluginService] public static IPluginLog PluginLog { get; private set; } = null;
-            // [PluginService] public static ITitleScreenMenu TitleScreenMenu { get; private set; } = null;
+            return new SeStringBuilder()
+                .AddUiForeground("[Orchestrion] ", 35)
+                .AddText(message)
+                .Build();
         }
+
         private DalamudPluginInterface PluginInterface { get; init; }
         private ICommandManager CommandManager { get; init; }
         public Configuration Configuration { get; init; }
@@ -84,7 +57,7 @@ namespace SamplePlugin
 
             ConfigWindow = new ConfigWindow(this);
             MainWindow = new MainWindow(this, goatImage);
-            
+
             WindowSystem.AddWindow(ConfigWindow);
             WindowSystem.AddWindow(MainWindow);
 
@@ -96,13 +69,17 @@ namespace SamplePlugin
             this.PluginInterface.UiBuilder.Draw += DrawUI;
             this.PluginInterface.UiBuilder.OpenConfigUi += DrawConfigUI;
 
-            
+
         }
-        public struct PvPProfile;
-        public ushort CrystallineConflictRankedMatches;
-        private string Ccstring(ushort matches)
+            public unsafe ushort whatcount()
         {
-            return matches.ToString();
+            var matchcount = PvPProfile.Instance();
+            return matchcount->CrystallineConflictRankedMatches;
+        }
+        public unsafe ushort whatcountwin()
+        {
+            var matchcount = PvPProfile.Instance();
+            return matchcount->CrystallineConflictRankedMatchesWon;
         }
         
         public void Dispose()
@@ -122,9 +99,6 @@ namespace SamplePlugin
         {
             // in response to the slash command, just display our main ui
             MainWindow.IsOpen = true;
-            DalamudApi.ChatGui.Print(BuildChatMessage(Ccstring(CrystallineConflictRankedMatches)));
-            DalamudApi.ChatGui.Print(BuildChatMessage("TEST"));
-
 
         }
 
