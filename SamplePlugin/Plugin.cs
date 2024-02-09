@@ -62,18 +62,11 @@ namespace SamplePlugin
             
         }
         public ushort CrystallineConflictRankedMatches;
-        private ccstring(ushort matches)
+        private Ccstring(ushort matches)
         {
-            matches.ToString();
+            return matches.ToString();
         }
         
-        private SeString BuildChatMessage(string message)
-	    {
-		    return new SeStringBuilder()
-			    .AddUiForeground("[Orchestrion] ", 35)
-		    	.AddText(message)
-			    .Build();
-	    }
         public void Dispose()
         {
             this.WindowSystem.RemoveAllWindows();
@@ -88,7 +81,7 @@ namespace SamplePlugin
         {
             // in response to the slash command, just display our main ui
             MainWindow.IsOpen = true;
-            BuildChatMessage(ccstring(CrystallineConflictRankedMatches));
+            BuildChatMessage(Ccstring(CrystallineConflictRankedMatches));
         }
 
         private void DrawUI()
