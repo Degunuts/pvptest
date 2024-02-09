@@ -10,7 +10,6 @@ using SamplePlugin.Windows;
 
 namespace SamplePlugin
 {
-    namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 
         public sealed class Plugin : IDalamudPlugin
