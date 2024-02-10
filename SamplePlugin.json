@@ -3,7 +3,7 @@
   "Author": "bike",
   "Name": "cc win rate tracker",
   "InternalName": "SamplePlugin",
-  "AssemblyVersion": "0.0.0.4",
+  "AssemblyVersion": "0.0.0.5",
   "Description": "self explanatory",
   "ApplicableVersion": "any",
   "Tags": [
