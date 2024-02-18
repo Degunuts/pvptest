@@ -8,7 +8,7 @@ using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
 using SamplePlugin.Windows;
 using Dalamud.Game.Text;
-﻿using Dalamud.Game;
+using Dalamud.Game;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -25,7 +25,7 @@ namespace SamplePlugin
     public sealed class Plugin : IDalamudPlugin
     {
         public string Name => "Sample Plugin";
-        private const string CommandName = "/pmycommand";
+        private const string CommandName = "/ccwr";
         private SeString BuildChatMessage(string message)
         {
             return new SeStringBuilder()
@@ -54,16 +54,18 @@ namespace SamplePlugin
             // you might normally want to embed resources and load them from the manifest stream
             var imagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "goat.png");
             var goatImage = this.PluginInterface.UiBuilder.LoadImage(imagePath);
+            var imagePath2 = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "catgirl.jpg");
+            var catImage = this.PluginInterface.UiBuilder.LoadImage(imagePath2);
 
             ConfigWindow = new ConfigWindow(this);
-            MainWindow = new MainWindow(this, goatImage);
+            MainWindow = new MainWindow(this, goatImage, catImage);
 
             WindowSystem.AddWindow(ConfigWindow);
             WindowSystem.AddWindow(MainWindow);
 
             this.CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
             {
-                HelpMessage = "A useful message to display in /xlhelp"
+                HelpMessage = ""
             });
 
             this.PluginInterface.UiBuilder.Draw += DrawUI;
@@ -71,7 +73,7 @@ namespace SamplePlugin
 
 
         }
-            public unsafe ushort whatcount()
+        public unsafe ushort whatcount()
         {
             var matchcount = PvPProfile.Instance();
             return matchcount->CrystallineConflictRankedMatches;
@@ -81,17 +83,58 @@ namespace SamplePlugin
             var matchcount = PvPProfile.Instance();
             return matchcount->CrystallineConflictRankedMatchesWon;
         }
-        
+        public unsafe ushort casualplayed()
+        {
+            var matchcount = PvPProfile.Instance();
+            return matchcount->CrystallineConflictCasualMatches;
+        }
+        public unsafe ushort casualswon()
+        {
+            var matchcount = PvPProfile.Instance();
+            return matchcount->CrystallineConflictCasualMatchesWon;
+        }
+        public unsafe uint fltotalmatches()
+        {
+            var matchcount = PvPProfile.Instance();
+            return matchcount->FrontlineTotalMatches;
+        }
+        public unsafe uint flfirst()
+        {
+            var matchcount = PvPProfile.Instance();
+            return matchcount->FrontlineTotalFirstPlace;
+        }
+        public unsafe uint flsecond()
+        {
+            var matchcount = PvPProfile.Instance();
+            return matchcount->FrontlineTotalSecondPlace;
+        }
+        public unsafe uint flthird()
+        {
+            var matchcount = PvPProfile.Instance();
+            return matchcount->FrontlineTotalThirdPlace;
+        }
+        public unsafe uint rwtotal()
+        {
+            var matchcount = PvPProfile.Instance();
+            return matchcount->RivalWingsTotalMatches;
+        }
+        public unsafe uint rwwins()
+        {
+            var matchcount = PvPProfile.Instance();
+            return matchcount->RivalWingsTotalMatchesWon;
+        }
+
         public void Dispose()
         {
             this.WindowSystem.RemoveAllWindows();
-            
+
             ConfigWindow.Dispose();
             MainWindow.Dispose();
-            
+
             this.CommandManager.RemoveHandler(CommandName);
         }
-        public unsafe bool IsPlayerMentor() {
+        public unsafe bool IsPlayerMentor()
+        {
             var playerStatePtr = PlayerState.Instance();
             return playerStatePtr->IsMentor();
         }
