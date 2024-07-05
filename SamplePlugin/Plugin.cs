@@ -15,7 +15,6 @@ using Dalamud.Plugin.Services;
 using System.Collections.Generic;
 using System.Reflection;
 using System;
-using FFXIVClientStructs.Interop.Attributes;
 using System.Runtime.InteropServices;
 
 namespace SamplePlugin
@@ -34,7 +33,7 @@ namespace SamplePlugin
                 .Build();
         }
 
-        private DalamudPluginInterface PluginInterface { get; init; }
+        private IDalamudPluginInterface PluginInterface { get; init; }
         private ICommandManager CommandManager { get; init; }
         public Configuration Configuration { get; init; }
         public WindowSystem WindowSystem = new("SamplePlugin");
@@ -42,8 +41,8 @@ namespace SamplePlugin
         private ConfigWindow ConfigWindow { get; init; }
         private MainWindow MainWindow { get; init; }
         public Plugin(
-            [RequiredVersion("1.0")] DalamudPluginInterface pluginInterface,
-            [RequiredVersion("1.0")] ICommandManager commandManager)
+            IDalamudPluginInterface pluginInterface,
+            ICommandManager commandManager)
         {
             this.PluginInterface = pluginInterface;
             this.CommandManager = commandManager;
@@ -52,13 +51,9 @@ namespace SamplePlugin
             this.Configuration.Initialize(this.PluginInterface);
 
             // you might normally want to embed resources and load them from the manifest stream
-            var imagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "goat.png");
-            var goatImage = this.PluginInterface.UiBuilder.LoadImage(imagePath);
-            var imagePath2 = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "catgirl.jpg");
-            var catImage = this.PluginInterface.UiBuilder.LoadImage(imagePath2);
 
             ConfigWindow = new ConfigWindow(this);
-            MainWindow = new MainWindow(this, goatImage, catImage);
+            MainWindow = new MainWindow(this);
 
             WindowSystem.AddWindow(ConfigWindow);
             WindowSystem.AddWindow(MainWindow);
