@@ -18,7 +18,7 @@
         "LoadPriority": 0,
         "Punchline": ":3",
         "AcceptsFeedback": true,
-        "DownloadLinkInstall": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip",
-        "DownloadLinkUpdate": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip"
+        "DownloadLinkInstall": "https://github.com/Degunuts/pvptest/releases/download/cc/latestdt.zip",
+        "DownloadLinkUpdate": "https://github.com/Degunuts/pvptest/releases/download/cc/latestdt.zip"
     }
 ]
