@@ -12,6 +12,7 @@
             "goats"
         ],
         "LoadRequiredState": 0,
+        "DalamudApiLevel": 10,
         "LoadSync": false,
         "CanUnloadAsync": false,
         "LoadPriority": 0,
