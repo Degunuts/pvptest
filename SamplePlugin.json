@@ -3,7 +3,7 @@
         "Author": "bike",
         "Name": "cc win rate tracker",
         "InternalName": "SamplePlugin",
-        "AssemblyVersion": "0.0.1.1",
+        "AssemblyVersion": "0.0.1.2",
         "Description": "self explanatory",
         "ApplicableVersion": "any",
         "Tags": [
@@ -16,8 +16,7 @@
         "LoadSync": false,
         "CanUnloadAsync": false,
         "LoadPriority": 0,
-        "Punchline": ":3",
-        "AcceptsFeedback": true,
+        "Punchline": "I love cc",
         "DownloadLinkInstall": "https://github.com/Degunuts/pvptest/releases/download/cc/latestdt.zip",
         "DownloadLinkUpdate": "https://github.com/Degunuts/pvptest/releases/download/cc/latestdt.zip"
     }
