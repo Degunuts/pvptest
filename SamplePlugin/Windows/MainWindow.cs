@@ -12,13 +12,11 @@ namespace SamplePlugin.Windows
 {
     public class MainWindow : Window, IDisposable
     {
-        private IDalamudTextureWrap GoatImage;
-        private IDalamudTextureWrap catImage;
         private Plugin Plugin;
-        private DalamudPluginInterface PluginInterface { get; init; }
+        private IDalamudPluginInterface PluginInterface { get; init; }
         private int currentTab = 0; // Index of the currently selected tab
 
-        public MainWindow(Plugin plugin, IDalamudTextureWrap goatImage, IDalamudTextureWrap catImage) : base(
+        public MainWindow(Plugin plugin) : base(
             "I LOEV CC", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
         {
             this.SizeConstraints = new WindowSizeConstraints
@@ -27,14 +25,14 @@ namespace SamplePlugin.Windows
                 MaximumSize = new Vector2(float.MaxValue, float.MaxValue)
             };
 
-            this.GoatImage = goatImage;
+
             this.Plugin = plugin;
-            this.catImage = catImage;
+
         }
 
         public void Dispose()
         {
-            this.GoatImage.Dispose();
+
         }
 
 
@@ -76,9 +74,7 @@ namespace SamplePlugin.Windows
             ImGui.Text("You have played " + Plugin.casualplayed().ToString() + "  games of casual CC, you monster");
             ImGui.Text("You have won " + Plugin.casualswon().ToString() + " games of casual CC, you ape");
             ImGui.Text("your win rate is " + String.Format("{0:P2}.", ((float)Plugin.casualswon() / Plugin.casualplayed())) + "%, GGs");
-            ImGui.Indent(55);
-            ImGui.Image(this.catImage.ImGuiHandle, new Vector2(this.catImage.Width, this.catImage.Height));
-            ImGui.Unindent(55);
+
         }
 
         private void DrawRankedTab()
@@ -88,9 +84,7 @@ namespace SamplePlugin.Windows
             ImGui.Text("You have played " + Plugin.whatcount().ToString() + "  games of ranked CC, you monster");
             ImGui.Text("You have won " + Plugin.whatcountwin().ToString() + " games of ranked CC, you ape");
             ImGui.Text("your win rate is " + String.Format("{0:P2}.", ((float)Plugin.whatcountwin() / Plugin.whatcount())) + "%, GGs");
-            ImGui.Indent(55);
-            ImGui.Image(this.GoatImage.ImGuiHandle, new Vector2(this.GoatImage.Width, this.GoatImage.Height));
-            ImGui.Unindent(55);
+
         }
 
         private void DrawRivalWingsTab()
