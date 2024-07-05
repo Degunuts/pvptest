@@ -16,6 +16,7 @@
         "CanUnloadAsync": false,
         "LoadPriority": 0,
         "Punchline": "I love cc",
+        "AcceptsFeedback": false,
         "DownloadLinkInstall": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip",
         "DownloadLinkUpdate": "https://github.com/Degunuts/pvptest/releases/download/cc/latest.zip"
     }
